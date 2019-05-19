@@ -164,73 +164,18 @@ get_header();
       					<div class="news_side_row">
       						<div class="row">
       							
-                    <div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
 
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
+                <?php
+                  /* Start the Loop */
+                  while ( have_posts() ) :
+                    the_post();
+                      echo '<div class="col-md-4 col-sm-4 col-xs-12">';
 
+                      get_template_part( 'template-parts/loops/post', 'card' );
 
-
-<!--       						</div>
-      					</div>
-      					<div class="news_side_row">
-
-      						<div class="row"> -->
-
-
-
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
+                    echo '</div>';
+                  endwhile;
+                ?>
 
 
       						</div>

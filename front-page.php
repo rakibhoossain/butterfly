@@ -66,14 +66,16 @@ get_header();
       <section id="news_type_one" class="news_type news_type_one">
         <div class="container">
           <div class="news_type_menu">
-            <ul class="news_menu">
-              <li><a href="#" style="background-color: #00BAEF">মডেল হতে চাই</a></li>
-              <li><a href="#" style="background-color: #3EC7F3">কন্ট্রিবিউটর হতে চাই</a></li>
-              <li><a href="#" style="background-color: #8BD6F5">লেখা পাঠাবো যেভাবে</a></li>
-              <li><a href="#" style="background-color: #C6E9FC">কার্যক্রম</a></li>
-              <li><a href="#" style="background-color: #FFFFFF">প্রজাপতি টীম</a></li>
-            </ul>
+            <?php
+            wp_nav_menu( array(
+              'theme_location'    => 'menu-1',
+              'depth'             => 1,
+              'container'         => false,
+              'menu_class'        => 'news_menu',
+            ) );
+            ?>
           </div>
+
           <div class="news_type_card">
             <div class="row">
               <div class="col-md-3 col-sm-3 col-xs-12">
@@ -161,6 +163,19 @@ get_header();
       				<div class="news_side">
       					<div class="news_side_row">
       						<div class="row">
+      							
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+      								<div class="individual_news_summary">
+      									<div class="card" style="">
+      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
+      									  <div class="card-body">
+      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
+      									  </div>
+      									  <a href="#" class="news_overlay"></a>
+      									</div>
+      								</div>
+      							</div>
+
       							<div class="col-md-4 col-sm-4 col-xs-12">
       								<div class="individual_news_summary">
       									<div class="card" style="">
@@ -172,32 +187,17 @@ get_header();
       									</div>
       								</div>
       							</div>
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
-      							<div class="col-md-4 col-sm-4 col-xs-12">
-      								<div class="individual_news_summary">
-      									<div class="card" style="">
-      									  <img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">
-      									  <div class="card-body">
-      									    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      									  </div>
-      									  <a href="#" class="news_overlay"></a>
-      									</div>
-      								</div>
-      							</div>
-      						</div>
+
+
+
+<!--       						</div>
       					</div>
       					<div class="news_side_row">
-      						<div class="row">
+
+      						<div class="row"> -->
+
+
+
       							<div class="col-md-4 col-sm-4 col-xs-12">
       								<div class="individual_news_summary">
       									<div class="card" style="">
@@ -231,10 +231,13 @@ get_header();
       									</div>
       								</div>
       							</div>
+
+
       						</div>
       					</div>
       				</div>
       			</div>
+
       			<div class="col-md-3 col-sm-3 col-xs-12">
       				<div class="sidebar">
       					<div class="row">
@@ -243,7 +246,14 @@ get_header();
       								<div class="sidebar_header">
       									<h4 class="sidebar_title"><span>আরও</span></h4>
       								</div>
-      								<div class="sidebar_nav">
+      								
+                      <div class="sidebar_nav">
+
+<?php 
+
+butterfly_post_categories(true);
+?>
+
       									<ul class="sidebar_menu">
       										<li><a href="#">আয়োজন</a></li>
       										<li><a href="#">স্টেডিয়াম</a></li>
@@ -254,6 +264,8 @@ get_header();
       										<li><a href="#">অন্যান্য</a></li>
       									</ul>
       								</div>
+
+
       							</div>
       						</div>
       					</div>
@@ -267,11 +279,14 @@ get_header();
       <section id="donation">
       	<div class="container">
       		<div class="donation_collect_menu">
-      		  <ul class="donation_menu">
-      		    <li><a href="#"  style="background-color: #EA1C24">প্রজেক্ট হাসিমুখ</a></li>
-      		    <li><a href="#" style="background-color: #F79579">হাত বাড়িয়ে দাও</a></li>
-      		    <li><a href="#" style="background-color: #FEC9B4">শিক্ষাবৃত্তি</a></li>
-      		  </ul>
+            <?php
+            wp_nav_menu( array(
+              'theme_location'    => 'menu-1',
+              'depth'             => 1,
+              'container'         => false,
+              'menu_class'        => 'donation_menu',
+            ) );
+            ?>
       		</div>
       	</div>
       </section>
@@ -359,6 +374,7 @@ get_header();
       				</div>
       			</div>
       			<div class="col-md-4 col-sm-4 col-xs-12">
+
       				<div class="individual_video_summary">
       					<div class="card" style="">
       					   <img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="Video Image">
@@ -368,6 +384,7 @@ get_header();
       					  <a href="#" class="video_overlay"></a>
       					</div>
       				</div>
+
       			</div>
       			<div class="col-md-4 col-sm-4 col-xs-12">
       				<div class="individual_video_summary">
@@ -426,7 +443,9 @@ get_header();
                 </div>
               </div>
               <div class="col-md-4 col-sm-4 col-xs-12">
-                <div class="card" style="width: ;">
+                
+
+                <div class="card">
                   <div class="card_header">
                     <h3 style="background-color: #00B9F2;"><span>ইশকুল</span></h3>
                   </div>
@@ -442,6 +461,8 @@ get_header();
                     <a href="#" class="" style="border-top: 2px solid #F8921A;">আরও</a>
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>

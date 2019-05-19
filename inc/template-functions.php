@@ -35,3 +35,27 @@ function butterfly_pingback_header() {
 	}
 }
 add_action( 'wp_head', 'butterfly_pingback_header' );
+
+
+/**
+ * Category list.
+ */
+if ( ! function_exists( 'butterfly_post_categories' ) ) :
+	/**
+	 * Displays categories.
+	 */
+	function butterfly_post_categories($multiple = false) {
+		if ( 'post' === get_post_type() ) {
+			if ($multiple) {
+				echo get_the_category_list();
+			}else{
+				$category = get_the_category( get_the_ID() );
+				if ( $category && !is_wp_error( $category ) ) :
+					echo '<ul class="post-categories">';
+					echo '<li><a href="'.get_category_link($category[0]->cat_ID).'">' . $category[0]->cat_name . '</a></li>';
+					echo '</ul>';
+				endif;
+			}
+		}
+	}
+endif;

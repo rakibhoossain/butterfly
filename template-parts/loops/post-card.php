@@ -1,6 +1,6 @@
 <div class="card" style="width: ;">
   <div class="card_header">
-    <h3 style="background-color: #EA1C24"><?php butterfly_post_categories(); ?></h3>
+    <h3><?php butterfly_post_categories(); ?></h3>
   </div>
   <div class="news_type_overlay">
 
@@ -22,6 +22,6 @@
    <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="news_type_overlay_link"></a>
   </div>
   <div class="see_more">
-    <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="" style="border-top: 2px solid #EA1C24;">আরও</a>
+    <a href="<?php echo esc_url( get_the_permalink() ); ?>">আরও</a>
   </div>
 </div>

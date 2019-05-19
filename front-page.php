@@ -83,7 +83,7 @@ get_header();
                   /* Start the Loop */
                   while ( have_posts() ) :
                     the_post();
-                      echo '<div class="col-md-3 col-sm-3 col-xs-12">';
+                      echo '<div class="col-md-3 col-sm-3 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'card' );
 
@@ -112,7 +112,7 @@ get_header();
                   /* Start the Loop */
                   while ( have_posts() ) :
                     the_post();
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12">';
+                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'summary' );
 

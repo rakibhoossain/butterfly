@@ -118,6 +118,19 @@ function butterfly_widgets_init() {
 		'before_title'  => '<h2 class="widget-title">',
 		'after_title'   => '</h2>',
 	) );
+
+	for($i=1;$i<=3;$i++){
+		register_sidebar( array(
+			'name'          => esc_attr__( 'Footer ', 'butterfly' ).($i),
+			'id'            => 'footer-'.($i),
+			'description'   => esc_attr__( 'Add widgets here to appear in your footer.', 'butterfly' ),
+			'before_widget' => '<div id="%1$s" class="col-md-4 widget-box %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h4 class="widget-title">',
+			'after_title'   => '</h4>',
+		) );
+	}
+
 }
 add_action( 'widgets_init', 'butterfly_widgets_init' );
 

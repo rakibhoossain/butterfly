@@ -21,38 +21,56 @@
 </head>
 
 <body <?php body_class(); ?>>
-<div id="page" class="site">
-	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'butterfly' ); ?></a>
 
-	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$butterfly_description = get_bloginfo( 'description', 'display' );
-			if ( $butterfly_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $butterfly_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
+  	<div id="wrapper">
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'butterfly' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
-	</header><!-- #masthead -->
+  		<!-- =============navbar section========== -->
+  		<div id="top_nav">
+  			<div class="container">
+  				<div class="row">
+  					<div class="col-md-6">
+  						<div id="logo">
+  							<img src="images/logo.png" class="">
+  						</div>
+  					</div>
+  					<div class="col-md-6">
+  						<div id="title">
+  							<h1>ছোটদের রঙিন দুনিয়া</h1>
+  							<h4>www.projapotee.com</h4>
+  						</div>
+  					</div>
+  				</div>
+  			</div>
+  		</div>
+  		<div id="main_menu">
+  			<div class="container">
+          <nav id="navbar" class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+              </div>
 
-	<div id="content" class="site-content">
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                  <li class="nav-item"><a class="nav-link active" href="#">সন্দেশ <span class="sr-only">(current)</span></a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">গল্প</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">ছড়া</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">আনন্দ</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">আলাপন</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">ফিচার</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">নোটবুক</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">ইশকুল</a></li>
+                  <li class="nav-item"><a class="nav-link" href="#">আরও</a></li>
+                </ul>
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+  			</div>
+  		</div>

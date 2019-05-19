@@ -35,6 +35,23 @@ if ( ! function_exists( 'butterfly_posted_on' ) ) :
 	}
 endif;
 
+
+function butterfly_post_update_on() {
+	$u_time = get_the_time('U'); 
+	$u_modified_time = get_the_modified_time('U'); 
+	if (get_the_time( 'U' ) !== get_the_modified_time( 'U' )) { 
+	$updated_date = get_the_modified_time('F jS, Y');
+	$updated_time = get_the_modified_time('h:i a'); 
+	printf('<p><span class="update">আপডেট:</span><span class="updated_date">'.$updated_date.'</span>, <span class="updated_time">'.$updated_time.'</span></p>');
+	}
+}
+
+
+
+
+
+
+
 if ( ! function_exists( 'butterfly_posted_by' ) ) :
 	/**
 	 * Prints HTML with meta information for the current author.

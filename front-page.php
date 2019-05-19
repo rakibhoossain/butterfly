@@ -15,52 +15,60 @@
 get_header();
 ?>
 
- 		<!-- =========== latest news section======= -->
-  		<section id="latest_news">
-  			<div class="container">
-  				<div class="latest_news_summary">
-  					<div class="row">
-  						<div class="col-md-6 col-sm-6 col-xs-12">
-  							<div class="summary_bimg">
-  								<img src="https://via.placeholder.com/540x360" class="img-responsive">
-  								<a href="#" class="summary_img_overlay"></a>
-  								<div class="summary_info">
-  									<div class="info_title">
-  										<h4><span>আমার সোনার বাংলা</span></h4>
-  									</div>
-  								</div>
-  							</div>
-  						</div>
-	  					<div class="col-md-6 col-sm-6 col-xs-12">
-	  						<div class="row">
-	  							<div class="col-md-8 col-sm-12 col-xs-12">
-	  								<div class="summary_simg">
-	  									<img src="https://via.placeholder.com/280x175" class="img-responsive">
-	  									<a href="#" class="summary_img_overlay"></a>
-	  									<div class="summary_info">
-	  										<div class="info_title">
-	  											<h4><span>আমার সোনার বাংলা</span></h4>
-	  										</div>
-	  									</div>
-	  								</div>
-	  							</div>
-	  							<div class="col-md-8 col-sm-12 col-xs-12">
-	  								<div class="summary_simg" style="margin-top: 10px;">
-		  								<img src="https://via.placeholder.com/280x175" class="img-responsive">
-		  								<a href="#" class="summary_img_overlay"></a>
-		  								<div class="summary_info">
-		  									<div class="info_title">
-		  										<h4><span>আমার সোনার বাংলা</span></h4>
-		  									</div>
-		  								</div>
-	  								</div>
-	  							</div>
-	  						</div>
-	  					</div>
-  					</div>
-  				</div>
-  			</div>
-  		</section>
+
+
+<?php
+$popular_show = 3 ;
+
+?>
+
+
+
+
+
+    <!-- =========== latest news section======= -->
+      <section id="latest_news">
+        <div class="container">
+          <div class="latest_news_summary">
+
+
+
+
+
+
+<?php $count = (int)0; ?> 
+
+  <div class="grid-post post-grid-<?php echo esc_attr( $popular_show ); ?>">
+
+  <?php
+    /* Start the Loop */
+    while ( have_posts() ) : the_post();?>
+
+
+    <?php
+    /**
+     * Run the loop for the search to output the results.
+     * If you want to overload this in a child theme then include a file
+     * called content-search.php and that will be used instead.
+     */
+    if ($count == 0) {
+      get_template_part( 'template-parts/loops/post-top', 'large' );
+    }else{
+      get_template_part( 'template-parts/loops/post-top', 'small' );
+    }
+
+    $count++; 
+    endwhile;
+    $count=0;?>
+  </div>
+
+
+
+
+
+          </div>
+        </div>
+      </section>
 
       <!-- =========== News Type section======= -->
       <section id="news_type_one" class="news_type news_type_one">

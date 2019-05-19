@@ -332,3 +332,175 @@
 }.news_type_card .row>.post:nth-child(4) .see_more{
 	border-color: #00B6EF;
 }
+
+
+/*TOP post grid*/
+/*--------------------------------------------------------------
+# Posts and pages
+--------------------------------------------------------------*/
+/* Grid post */
+.grid-post {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+.post-grid-5 {
+  padding-left: 50%;
+}
+.post-grid-3 {
+  padding-left: 70%;
+}
+
+.post-box-img.top-layout {
+  position: relative;
+  margin-top: 10px;
+  overflow: hidden;
+  background-color: #060917;
+  height: 215px;
+}
+.post-grid-3 .post-box-img.bg-img{
+    min-height: 200px;
+}
+
+.post-grid-5 .post-box-img.top-layout {
+  flex: 0 0 calc(50% - 10px);
+}
+
+.post-grid-5 .post-box-img.top-layout {
+  margin-left: 10px;
+}
+
+.post-box-img.top-layout.large {
+  position: absolute;
+  left: 0;
+  height: calc(100% - 10px);
+}
+
+.post-grid-5 .post-box-img.top-layout.large{
+  margin-left: 0;
+   width: 50%;
+}
+.post-grid-3 .post-box-img.top-layout.large{
+   width: calc(70% - 10px);
+}
+
+.post-box-img.no-img.top-layout {
+    display: inline-flex;
+    width: 100%;
+}
+
+
+/* // Medium devices (tablets, less than 992px) */
+@media (max-width: 991.98px) {
+
+.post-grid-3,
+.post-grid-5 {
+  padding-left: 0;
+}
+.post-grid-5{
+  margin-right: -10px;
+}
+.post-grid-5 .post-box-img.top-layout {
+  flex: 0 0 calc(50% - 10px);
+  margin-left: 0;
+  margin-right: 10px;
+}
+
+.post-box-img.top-layout:after {
+  content: "";
+  display: block;
+  padding-top: 50%;
+}
+
+.post-box-img.top-layout.large {
+  position: relative;
+  height: auto;
+}
+.post-grid-5 .post-box-img.top-layout,
+.post-grid-5 .post-box-img.top-layout.large{
+  width: calc(50% - 10px);
+}
+.post-grid-3 .post-box-img.top-layout,
+.post-grid-3 .post-box-img.top-layout.large{
+   width: 100%;
+}
+
+}
+
+/* // Small devices (landscape phones, less than 768px) */
+@media (max-width: 767.98px) {
+.post-grid-5 .post-box-img.top-layout {
+    flex: 0 0 calc(100% - 10px);
+}
+}
+
+/* // Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 575.98px) {
+  .grid-post {
+    margin-top: 0;
+  }
+}
+
+
+
+.posts-box-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: 9;
+}
+
+.posts-box-link{
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    display: block;
+    -o-background-size: cover !important;
+    -moz-background-size: cover !important;
+    -webkit-background-size: cover !important;
+    background-size: cover !important;
+    background-position: center center !important;
+    background-repeat: no-repeat !important;
+    -ms-transform: scale3d(1,1,1);
+    -o-transform: scale3d(1,1,1);
+    -moz-transform: scale3d(1,1,1);
+    -webkit-transform: scale3d(1,1,1);
+    transform: scale3d(1,1,1);
+}
+
+.post-box-img .post-box-details {
+    position: absolute;
+    bottom: 25px;
+    left: 20px;
+    z-index: 999999;
+
+
+}
+.post-box-img.top-layout.relative {
+    width: 100%;
+}
+
+.post-box-details a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.post-box-details a:hover {
+    color: #ffc107;
+}
+
+.posts-box-link:after {
+    position: absolute;
+    content: '';
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    transition: background 0.5s;
+}
+.posts-box-link:hover:after {
+  background: rgba(0,0,0,0.1);
+}

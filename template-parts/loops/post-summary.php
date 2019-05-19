@@ -6,10 +6,10 @@
 				$title = get_the_title();
 				printf('<img class="card-img-top img-responsive" src="'.esc_url($image).'" alt="'.$title.'">');
 				}else{
-					printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="News Image">');
+					printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/280x175" alt="'.$title.'">');
 				}
 			?>
       	<div class="card-body"><?php the_title( '<h4 class="card-title">', '</h4>' );?></div>
-      	<a href="<?php esc_url( get_the_permalink() ); ?>" rel="bookmark" class="news_overlay"></a>
+      	<a href="<?php echo esc_url( get_the_permalink() ); ?>" rel="bookmark" class="news_overlay"></a>
     </div>
 </div>

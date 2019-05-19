@@ -30,7 +30,17 @@
   				<div class="row">
   					<div class="col-md-6">
   						<div id="logo">
-  							<img src="images/logo.png" class="">
+
+
+					<?php 
+						if ( has_custom_logo() ) {
+							the_custom_logo();
+						} else {
+							echo '<h1>'. get_bloginfo( 'name' ) .'</h1>';
+						}
+					?>
+
+
   						</div>
   					</div>
   					<div class="col-md-6">
@@ -44,33 +54,34 @@
   		</div>
   		<div id="main_menu">
   			<div class="container">
-          <nav id="navbar" class="navbar navbar-default">
-            <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-              </div>
+	          <nav id="navbar" class="navbar navbar-default">
+	            <div class="container-fluid">
+	              <!-- Brand and toggle get grouped for better mobile display -->
+	              <div class="navbar-header">
+	                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	                  <span class="sr-only">Toggle navigation</span>
+	                  <span class="icon-bar"></span>
+	                  <span class="icon-bar"></span>
+	                  <span class="icon-bar"></span>
+	                </button>
+	              </div>
 
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                  <li class="nav-item"><a class="nav-link active" href="#">সন্দেশ <span class="sr-only">(current)</span></a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">গল্প</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">ছড়া</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">আনন্দ</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">আলাপন</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">ফিচার</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">নোটবুক</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">ইশকুল</a></li>
-                  <li class="nav-item"><a class="nav-link" href="#">আরও</a></li>
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>
+	        <?php
+			wp_nav_menu( array(
+				'theme_location'    => 'menu-1',
+				'depth'             => 2,
+				'container'         => 'div',
+				'container_class'   => 'collapse navbar-collapse',
+				'container_id'      => 'bs-example-navbar-collapse-1',
+				'menu_class'        => 'nav navbar-nav',
+				'fallback_cb'       => 'WP_Bootstrap_Navwalker::fallback',
+				'walker'            => new WP_Bootstrap_Navwalker(),
+			) );
+			?> <!-- /.navbar-collapse -->
+
+
+
+	            </div><!-- /.container-fluid -->
+	          </nav>
   			</div>
-  		</div>
+  		</div><!-- /.Main menu end -->

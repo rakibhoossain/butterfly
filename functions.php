@@ -74,8 +74,8 @@ if ( ! function_exists( 'butterfly_setup' ) ) :
 		 * @link https://codex.wordpress.org/Theme_Logo
 		 */
 		add_theme_support( 'custom-logo', array(
-			'height'      => 250,
-			'width'       => 250,
+			'height'      => 108,
+			'width'       => 225,
 			'flex-width'  => true,
 			'flex-height' => true,
 		) );
@@ -122,6 +122,36 @@ add_action( 'widgets_init', 'butterfly_widgets_init' );
 function butterfly_scripts() {
 	wp_enqueue_style( 'butterfly-style', get_stylesheet_uri() );
 
+
+wp_enqueue_style( 'butterfly-bootstrap', get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css', array(), '1.0' );
+wp_enqueue_style( 'butterfly-font-awesome', get_stylesheet_directory_uri() . '/assets/css/font-awesome.min.css', array(), '1.0' );
+
+
+wp_enqueue_style( 'butterfly-maateen', "https://fonts.maateen.me/bangla/font.css?ver=4.9.10" );
+wp_enqueue_style( 'butterfly-googleFonts', "https://fonts.googleapis.com/css?family=Raleway&display=swap" );
+
+
+
+wp_enqueue_style( 'butterfly-global', get_stylesheet_directory_uri() . '/assets/css/global.css', array(), '1.0' );
+wp_enqueue_style( 'butterfly-menu', get_stylesheet_directory_uri() . '/assets/css/menu.css', array(), '1.0' );
+
+
+wp_enqueue_style( 'butterfly-single', get_stylesheet_directory_uri() . '/assets/css/single.css', array(), '1.0' );
+wp_enqueue_style( 'butterfly-index', get_stylesheet_directory_uri() . '/assets/css/index.css', array(), '1.0' );
+
+
+wp_enqueue_style( 'butterfly-footer', get_stylesheet_directory_uri() . '/assets/css/footer.css', array(), '1.0' );
+wp_enqueue_style( 'butterfly-responsive', get_stylesheet_directory_uri() . '/assets/css/responsive.css', array(), '1.0' );
+
+
+	wp_enqueue_script( 'jquery');
+	wp_enqueue_script( 'butterfly-popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), '1.0.0', true);
+	wp_enqueue_script( 'butterfly-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '4.0.0', true);
+
+
+
+
+
 	wp_enqueue_script( 'butterfly-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
 
 	wp_enqueue_script( 'butterfly-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
@@ -151,6 +181,9 @@ require get_template_directory() . '/inc/template-functions.php';
  * Customizer additions.
  */
 require get_template_directory() . '/inc/customizer.php';
+
+// Register Custom Navigation Walker
+require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
 
 /**
  * Load Jetpack compatibility file.

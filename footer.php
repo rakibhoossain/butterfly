@@ -16,7 +16,7 @@
           <div class="row">
             <div class="col-md-4">
               <div class="footer_logo">
-                <img src="images/logo.png" class="">
+                <img src="<?php echo get_template_directory_uri();?>/assets/images/logo.png" class="">
               </div>
               <div class="title">
                 <h4>www.projapotee.com</h4>
@@ -43,15 +43,8 @@
 
 
       
-  	</div>
+  	</div> <!-- Wrapper end  -->
 
-
-    <!-- <h1>This is heading One</h1> -->
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.3.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 
 <?php wp_footer(); ?>
 </body>

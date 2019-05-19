@@ -248,21 +248,9 @@ get_header();
       								</div>
       								
                       <div class="sidebar_nav">
-
-<?php 
-
-butterfly_post_categories(true);
-?>
-
-      									<ul class="sidebar_menu">
-      										<li><a href="#">আয়োজন</a></li>
-      										<li><a href="#">স্টেডিয়াম</a></li>
-      										<li><a href="#">জোক্স</a></li>
-      										<li><a href="#">জানতে চাই</a></li>
-      										<li><a href="#">টিউটোরিয়াল</a></li>
-      										<li><a href="#">ধাঁধা</a></li>
-      										<li><a href="#">অন্যান্য</a></li>
-      									</ul>
+                      <?php 
+                        butterfly_post_categories(true);
+                      ?>
       								</div>
 
 

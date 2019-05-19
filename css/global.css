@@ -1,0 +1,36 @@
+*,*::after{
+	box-sizing: border-box;
+}
+body{
+	font-family: 'Bangla', Arial, sans-serif !important;
+}
+h1,h2,h3,h4,h5,h6{
+	margin: 0;
+}
+ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style-type: none;
+}
+.img-responsive{
+	width: 100% !important;
+}
+#wrapper{
+
+}
+#wrapper .card{
+	border-radius: 0;
+	border: none;
+}
+#wrapper .card-img-top{
+	border-radius: 0 !important;
+}
+#wrapper .card .card-body{
+	padding: 0.50rem;
+}
+#wrapper .card .card-body>h4{
+	margin: 0;
+	font-size: 24px;
+}

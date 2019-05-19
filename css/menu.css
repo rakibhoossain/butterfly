@@ -1,0 +1,53 @@
+/*=========== Navbar section======= */
+#wrapper #top_nav{
+	background-color: #e6e600;
+	/*border: 2px solid #000;*/
+}
+#wrapper #top_nav #logo>img,
+#wrapper #footer .footer_logo>img{
+	width: 250px;
+}
+#wrapper #top_nav #title{
+	text-align: center;
+	margin-top: 14px;
+}
+#wrapper #top_nav #title>h1{
+	font-size: 3.5rem;
+	color: red;
+	margin-bottom: 0;
+	line-height: 60px;
+}
+#wrapper #top_nav #title>h4{
+	font-family: 'Raleway', sans-serif;
+}
+#wrapper #main_menu{
+	background-color: #e2e2e2;
+}
+.navbar{
+	border-radius: 0;
+	margin: 0;
+	min-height: auto;
+}
+.navbar-default{
+	background-color: transparent;
+	border:none;
+}
+#wrapper #navbar{
+	padding: 3px 0 0 0;
+	/*border: 2px solid #000;
+	border-top: transparent;*/
+}
+#wrapper .navbar-nav .nav-item{
+	margin: 0 1px;
+}
+#wrapper .navbar-nav .nav-link{
+	color: rgba(0,0,0,1.0);
+	font-size: 30px;
+	padding: 18px 18px;
+	background: #f1f1f1;
+	transition: 0.1s;
+}
+#wrapper .navbar-nav .nav-link:hover{
+	background-color: #000;
+	color: #fff;
+}

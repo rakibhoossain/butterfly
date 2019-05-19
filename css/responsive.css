@@ -1,0 +1,86 @@
+@media screen and (max-width: 1199px) {
+	#latest_news .latest_news_summary .summary_simg{
+		margin-right: 60px;
+	}
+}
+
+@media screen and (max-width: 991px) {
+	.navbar-light .navbar-toggler{
+		border: none;
+		font-size: 30px;
+	}
+	.navbar-toggler:focus, .navbar-toggler:hover{
+		outline: none;
+		border: none;
+	}
+	#wrapper #top_nav #logo > img, #wrapper #footer .footer_logo img{
+		width: 225px;
+	}
+	#wrapper #top_nav #title > h1{
+		font-size: 3rem;
+		line-height: 50px;
+
+	}
+	#wrapper .navbar-nav .nav-link{
+		padding: 14px 9px;
+		font-size: 28px;
+	}
+	#latest_news .latest_news_summary .summary_simg{
+		margin-right: 43px;
+	}
+	#wrapper .news_type_menu .news_menu > li > a{
+		font-size: 22px;
+	}
+	#wrapper #social_media .fb > a, 
+	#wrapper #social_media .youtube > a{
+		font-size: 25px;
+	}
+	#wrapper #social_media .fb span.social_media_title, 
+	#wrapper #social_media .youtube span.social_media_title{
+		font-size: 35px;
+	}
+	#wrapper #social_media .youtube > a img{
+		width: 65px;
+	}
+
+	#wrapper #footer h4{
+		font-size: 21px;
+	}
+}
+@media screen and (max-width: 767px) {
+	#wrapper #top_nav #logo > img, #wrapper #footer .footer_logo img{
+		width: 130px;
+	}
+	#wrapper #top_nav #title > h1{
+		font-size: 2.2rem;
+		line-height: 30px;
+	}
+	#wrapper #top_nav #title{
+		margin-top: 8px;
+		margin-left: 14px;
+	}
+	#latest_news .latest_news_summary .summary_bimg, #latest_news .latest_news_summary .summary_simg{
+		margin-bottom: 10px;
+	}
+	#latest_news .latest_news_summary .summary_simg{
+		margin-right: 0;
+	}
+	#wrapper .news_type_menu > .news_menu, #donation .donation_menu{
+		display: block;
+	}
+	#wrapper .card{
+		margin-bottom: 10px;
+	}
+	#wrapper #social_media .fb{
+		margin-bottom: 10px;
+	}
+	#wrapper #social_media .fb > a, #wrapper #social_media .youtube > a{
+		font-size: 20px;
+	}
+	#wrapper #social_media .fb span.social_media_title, #wrapper #social_media .youtube span.social_media_title{
+		font-size: 24px;
+	}
+	#wrapper #social_media .youtube > a img{
+		width: 50px;
+	}
+}

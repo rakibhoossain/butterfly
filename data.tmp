@@ -1,0 +1,43 @@
+            <?php
+            $catlist = get_terms( 'category' );
+            $count =0;
+            if ( ! empty( $catlist ) ) {
+              foreach ( $catlist as $key => $item ) {
+                $count++;
+                if ($count>=5) break;
+            ?>
+            <div class="col-md-3 col-sm-3 col-xs-12 post">
+              <div class="card" style="width: ;">
+                <div class="card_header">
+                  <h3><?php echo $item->name; ?></h3>
+                </div>
+                <div class="news_type_overlay">
+                    <?php 
+
+                    $imageID = get_term_meta( $item->term_id, 'wpsfi_tax_image_id', true );
+
+                    $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'card-img-top img-responsive' ) );
+                    if($image){ 
+                      echo $image;
+                      }else{
+                        printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="'.$item->name.'">');
+                      }
+                    ?>
+                 <div class="card-body">
+                    <p class="card-text"><?php echo $item->description; ?></p>
+                 </div>
+                 <a href="<?php echo esc_url( get_term_link($item) ); ?>" class="news_type_overlay_link"></a>
+                </div>
+                <div class="see_more">
+                  <a href="<?php echo esc_url( get_term_link($item) ); ?>">আরও</a>
+                </div>
+              </div>
+            </div>
+
+            
+            <?php
+
+              }
+            }
+
+            ?>

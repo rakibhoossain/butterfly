@@ -51,3 +51,22 @@ function butterfly_sanitize_array_post( $input ) {
   }
   return $input;
 }
+
+/**
+ * Validate the options against the existing categories
+ *
+ * @param  string[] $input
+ *
+ * @return string
+ */
+function butterfly_sanitize_array_catagory( $input ) {
+  $valid = butterfly_cat_list();
+  if (is_array($input) && !empty($input)) {
+    foreach ( $input as $value ) {
+      if ( ! array_key_exists( $value, $valid ) ) {
+        return [];
+      }
+    }
+  }
+  return $input;
+}

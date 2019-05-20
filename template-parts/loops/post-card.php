@@ -17,7 +17,7 @@
 
    <div class="card-body">
      <?php the_title( '<h4 class="card-title">', '</h4>' );?>
-      <p class="card-text"><?php echo wp_strip_all_tags( get_the_excerpt(), true ); ?></p>
+      <p class="card-text"><?php echo wp_trim_words( get_the_excerpt(), 14, '...' ); ?></p>
    </div>
    <a href="<?php echo esc_url( get_the_permalink() ); ?>" class="news_type_overlay_link"></a>
   </div>

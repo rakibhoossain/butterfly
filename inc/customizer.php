@@ -49,7 +49,7 @@ function butterfly_customize_register( $wp_customize ) {
         $wp_customize->add_section('butterfly_top_post_controls', array(
             'title' => __('Top post', 'butterfly'),
             'panel' => 'butterfly_panel',
-            'priority' => 4,
+            'priority' => 1,
         ));
 
         $wp_customize->add_setting( 'butterfly_top_post_type', array(
@@ -120,14 +120,73 @@ function butterfly_customize_register( $wp_customize ) {
 
 
 
+        //  ===================================
+        //  ====     Feature post      ====
+        //  ===================================
+        $wp_customize->add_section('butterfly_feature_post_controls', array(
+            'title' => __('Feature post', 'butterfly'),
+            'panel' => 'butterfly_panel',
+            'priority' => 2,
+        ));
+
+        $wp_customize->add_setting( 'butterfly_feature_post_1', array(
+            'sanitize_callback' =>  'butterfly_sanitize_array_catagory',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
+        $wp_customize->add_setting( 'butterfly_feature_post_2', array(
+            'sanitize_callback' =>  'butterfly_sanitize_array_catagory',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
+        $wp_customize->add_setting( 'butterfly_feature_post_3', array(
+            'sanitize_callback' =>  'butterfly_sanitize_array_catagory',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
+        $wp_customize->add_setting( 'butterfly_feature_post_video', array(
+            'sanitize_callback' =>  'butterfly_sanitize_array_catagory',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
 
 
 
 
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_feature_post_1', array(
+            'label'   => __('Feature one category', 'butterfly'),
+            'section' => 'butterfly_feature_post_controls',
+            'settings'   => 'butterfly_feature_post_1',
+            'type'     => 'single',
+            'choices'  => butterfly_cat_list(),
+            // 'active_callback' => 'butterfly_post_callback',
+        ) ) );
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_feature_post_2', array(
+            'label'   => __('Feature two category', 'butterfly'),
+            'section' => 'butterfly_feature_post_controls',
+            'settings'   => 'butterfly_feature_post_2',
+            'type'     => 'single',
+            'choices'  => butterfly_cat_list(),
+            // 'active_callback' => 'butterfly_post_callback',
+        ) ) );
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_feature_post_3', array(
+            'label'   => __('Feature three category', 'butterfly'),
+            'section' => 'butterfly_feature_post_controls',
+            'settings'   => 'butterfly_feature_post_3',
+            'type'     => 'single',
+            'choices'  => butterfly_cat_list(),
+            // 'active_callback' => 'butterfly_post_callback',
+        ) ) );
 
-
-
-
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_feature_post_video', array(
+            'label'   => __('Feature video category', 'butterfly'),
+            'section' => 'butterfly_feature_post_controls',
+            'settings'   => 'butterfly_feature_post_video',
+            'type'     => 'single',
+            'choices'  => butterfly_cat_list(),
+            // 'active_callback' => 'butterfly_post_callback',
+        ) ) );
+        
 
 		//  ===================================
         //  ====     social      ====
@@ -210,3 +269,11 @@ function butterfly_customize_preview_js() {
 	wp_enqueue_script( 'butterfly-customizer', get_template_directory_uri() . '/js/customizer.js', array( 'customize-preview' ), '20151215', true );
 }
 add_action( 'customize_preview_init', 'butterfly_customize_preview_js' );
+
+/**
+ * Enqueue script for custom customize control.
+ */
+function magazil_customize_enqueue() {
+    wp_enqueue_script( 'magazil-custom-customize', get_template_directory_uri() . '/inc/customizer/js/magazil-customize.js', array( 'jquery', 'customize-controls' ), false, true );
+}
+add_action( 'customize_controls_enqueue_scripts', 'magazil_customize_enqueue' );

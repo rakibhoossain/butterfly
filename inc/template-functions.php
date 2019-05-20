@@ -99,3 +99,17 @@ function butterfly_post_list() {
 
   return $pages;
 }
+
+/**
+ * Get all categories
+ * 
+ * @return array
+ */
+function butterfly_cat_list() {
+  $cats    = array();
+  foreach ( get_categories() as $categories => $category ) {
+    $cats[ $category->term_id ] = $category->name;
+  }
+
+  return $cats;
+}

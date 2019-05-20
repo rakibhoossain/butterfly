@@ -13,43 +13,16 @@
  */
 
 get_header();
-
-
-// General post data
-$posts = new WP_Query( array(
-  'post_type' => 'post',//'page ,post',
-  'ignore_sticky_posts' => true,
-  'posts_per_page' => 3,
-) );
-
-
 ?>
-
-
     <!-- =========== latest news section======= -->
       <section id="latest_news">
         <div class="container">
           <div class="row">
             <div class="col-md-9">
               <div class="latest_news_summary">
-                <?php $count = (int)0; ?> 
+                <?php //$count = (int)0; ?> 
                 <div class="grid-post post-grid-3">
-                <?php
-                  /* Start the Loop */
-                  while ( $posts->have_posts() ) : $posts->the_post();
-                  /**
-                   * Run the loop for the search to output the results.
-                   * If you want to overload this in a child theme then include a file
-                   * called content-search.php and that will be used instead.
-                   */
-                  if ($count == 0) {
-                    get_template_part( 'template-parts/loops/post-top', 'large' );
-                  }else{
-                    get_template_part( 'template-parts/loops/post-top', 'small' );
-                  }
-                  $count++; 
-                  endwhile;
-                  $count=0;?>
+                  <?php get_template_part( 'inc/components/top-post' ); ?>
                 </div>
               </div>
             </div>
@@ -81,47 +54,21 @@ $posts = new WP_Query( array(
           <div class="news_type_card">
             <div class="row">
 
-            <?php
-            $catlist = get_terms( 'category' );
-            $count =0;
-            if ( ! empty( $catlist ) ) {
-              foreach ( $catlist as $key => $item ) {
-                $count++;
-                if ($count>=5) break;
-            ?>
-            <div class="col-md-3 col-sm-3 col-xs-12 post">
-              <div class="card" style="width: ;">
-                <div class="card_header">
-                  <h3><?php echo $item->name; ?></h3>
-                </div>
-                <div class="news_type_overlay">
-                    <?php 
+              <?php
+                $cat_1        = get_theme_mod( 'butterfly_feature_post_1', 0 );
+                $feature_post_1 = new wp_query( array('category__in' => $cat_1, 'posts_per_page'=> 4, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
+                /* Start the Loop */
+                while ( $feature_post_1->have_posts() ) : $feature_post_1->the_post();
 
-                    $imageID = get_term_meta( $item->term_id, 'wpsfi_tax_image_id', true );
+                    echo '<div class="col-md-3 col-sm-3 col-xs-12 post">';
 
-                    $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'card-img-top img-responsive' ) );
-                    if($image){ 
-                      echo $image;
-                      }else{
-                        printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="'.$item->name.'">');
-                      }
-                    ?>
-                 <div class="card-body">
-                    <p class="card-text"><?php echo $item->description; ?></p>
-                 </div>
-                 <a href="<?php echo esc_url( get_term_link($item) ); ?>" class="news_type_overlay_link"></a>
-                </div>
-                <div class="see_more">
-                  <a href="<?php echo esc_url( get_term_link($item) ); ?>">আরও</a>
-                </div>
-              </div>
-            </div>
-            <?php
+                    get_template_part( 'template-parts/loops/post', 'card' );
 
-              }
-            }
-
-            ?>
+                  echo '</div>';
+                endwhile;
+                wp_reset_postdata();
+                wp_reset_query();
+              ?>
 
             </div>
           </div>
@@ -136,20 +83,26 @@ $posts = new WP_Query( array(
       				<div class="news_side">
       					<div class="news_side_row">
       						<div class="row">
-      							
-
                 <?php
+                  // General post data
+                  $posts = new WP_Query( array(
+                    'post_type' => 'post',//'page ,post',
+                    'ignore_sticky_posts' => true,
+                    'posts_per_page' => 8,
+                  ) );
+
                   /* Start the Loop */
                   while ( $posts->have_posts() ) : $posts->the_post();
 
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
+                      echo '<div class="col-md-4 col-sm-4 col-xs-12">';
 
                       get_template_part( 'template-parts/loops/post', 'summary' );
 
                     echo '</div>';
                   endwhile;
+                  wp_reset_postdata();
+                  wp_reset_query();
                 ?>
-
 
       						</div>
       					</div>
@@ -166,11 +119,22 @@ $posts = new WP_Query( array(
       								</div>
       								
                       <div class="sidebar_nav">
-                      <?php 
-                        butterfly_post_categories(true);
-                      ?>
+                        <ul class="post-categories">
+                          <?php
+                            $catlist = get_terms( 'category' );
+                            if ( ! empty( $catlist ) ) {
+                              $ctl=(int)0;
+                              foreach ( $catlist as $key => $item ) {
+                                if ($ctl>=8) break;
+                            ?>
+                            <li><a href="<?php echo esc_url( get_term_link($item) ); ?>" rel="category tag"><?php echo $item->name; ?></a></li>
+                            <?php
+                            $ctl++;
+                              }
+                            }
+                          ?>
+                        </ul>
       								</div>
-
 
       							</div>
       						</div>
@@ -204,8 +168,12 @@ $posts = new WP_Query( array(
             <div class="row">
 
                 <?php
+
+                  $cat_2        = get_theme_mod( 'butterfly_feature_post_2', 0 );
+                  $feature_post_2 = new wp_query( array('category__in' => $cat_2, 'posts_per_page'=> 3, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
+
                   /* Start the Loop */
-                  while ( $posts->have_posts() ) : $posts->the_post();
+                  while ( $feature_post_2->have_posts() ) : $feature_post_2->the_post();
 
                       echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
@@ -213,6 +181,8 @@ $posts = new WP_Query( array(
 
                     echo '</div>';
                   endwhile;
+                  wp_reset_postdata();
+                  wp_reset_query();
                 ?>
 
             </div>
@@ -227,41 +197,21 @@ $posts = new WP_Query( array(
       			<h1 class="video_heading">ভিডিও</h1>
       		</div>
       		<div class="row">
-      			<div class="col-md-4 col-sm-4 col-xs-12">
-      				<div class="individual_video_summary">
-      					<div class="card" style="">
-                  <img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="Video Image">
-      					  <div class="card-body">
-      					    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      					  </div>
-      					  <a href="#" class="video_overlay"></a>
-      					</div>
-      				</div>
-      			</div>
-      			<div class="col-md-4 col-sm-4 col-xs-12">
+                <?php
 
-      				<div class="individual_video_summary">
-      					<div class="card" style="">
-      					   <img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="Video Image">
-      					  <div class="card-body">
-      					    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      					  </div>
-      					  <a href="#" class="video_overlay"></a>
-      					</div>
-      				</div>
+                  $cat_video        = get_theme_mod( 'butterfly_feature_post_video', 0 );
+                  $feature_post_video = new wp_query( array('category__in' => $cat_video, 'posts_per_page'=> 3, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
 
-      			</div>
-      			<div class="col-md-4 col-sm-4 col-xs-12">
-      				<div class="individual_video_summary">
-      					<div class="card" style="">
-      					   <img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="Video Image">
-      					  <div class="card-body">
-      					    <h4 class="card-title">আমার সোনার বাংলা</h4>
-      					  </div>
-      					  <a href="#" class="video_overlay"></a>
-      					</div>
-      				</div>
-      			</div>
+                  /* Start the Loop */
+                  while ( $feature_post_video->have_posts() ) : $feature_post_video->the_post();
+
+                    echo '<div class="col-md-4 col-sm-4 col-xs-12">';
+                      get_template_part( 'template-parts/loops/post', 'video' );
+                    echo '</div>';
+                  endwhile;
+                  wp_reset_postdata();
+                  wp_reset_query();
+                ?>
       		</div>
       	</div>
       </section>
@@ -273,14 +223,19 @@ $posts = new WP_Query( array(
             <div class="row">
               
                 <?php
+
+                  $cat_3        = get_theme_mod( 'butterfly_feature_post_3', 0 );
+                  $feature_post_3 = new wp_query( array('category__in' => $cat_3, 'posts_per_page'=> 3, 'no_found_rows' => 1 ,'ignore_sticky_posts' => true)  );
                   /* Start the Loop */
-                  while ( $posts->have_posts() ) : $posts->the_post();
+                  while ( $feature_post_3->have_posts() ) : $feature_post_3->the_post();
                       echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'card' );
 
                     echo '</div>';
                   endwhile;
+                  wp_reset_postdata();
+                  wp_reset_query();
                 ?>
 
             </div>

@@ -11,6 +11,12 @@
  * @param WP_Customize_Manager $wp_customize Theme Customizer object.
  */
 function butterfly_customize_register( $wp_customize ) {
+
+    /** Dropdown additions **/
+    require_once get_template_directory() . '/inc/customizer/class/class-customizer-select-dropdown-control.php';
+    require_once get_template_directory() . '/inc/customizer/sanitize.php';
+    require_once get_template_directory() . '/inc/customizer/callback.php';
+
 	$wp_customize->get_setting( 'blogname' )->transport         = 'postMessage';
 	$wp_customize->get_setting( 'blogdescription' )->transport  = 'postMessage';
 	$wp_customize->get_setting( 'header_textcolor' )->transport = 'postMessage';
@@ -36,8 +42,95 @@ function butterfly_customize_register( $wp_customize ) {
         ));
 
 
+        //  ===================================
+        //  ====     Top post              ====
+        //  ===================================
+
+        $wp_customize->add_section('butterfly_top_post_controls', array(
+            'title' => __('Top post', 'butterfly'),
+            'panel' => 'butterfly_panel',
+            'priority' => 4,
+        ));
+
+        $wp_customize->add_setting( 'butterfly_top_post_type', array(
+            'sanitize_callback' => 'butterfly_sanitize_array_top_type',
+            'default'           => 'post',
+            'transport'  => 'postMessage'
+        ));
+
+
+
+
+        
+        /**
+         * Display Breaking tags
+         */
+         $wp_customize->add_setting( 'butterfly_top_page', array(
+             'sanitize_callback' =>  'butterfly_sanitize_array_page',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
+
+         /**
+          * Display Breaking tags
+         */
+         $wp_customize->add_setting( 'butterfly_top_post', array(
+            'sanitize_callback' =>  'butterfly_sanitize_array_post',
+             // 'default'           => '',
+             'transport'  => 'postMessage'
+         ));
+
+
+
+        /**
+         * Breaking news type
+         */
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_top_post_type', array(
+            'label'       => esc_html__( 'Type of post', 'butterfly' ),
+            'description' => esc_html__( 'Select what type of post you want to use', 'butterfly' ),
+            'section' => 'butterfly_top_post_controls',
+            'settings'   => 'butterfly_top_post_type',
+            'type'     => 'single',
+            'choices'  => butterfly_top_post_type()
+        ) ) );
+
+        /**
+         * Breaking news page
+         */
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_top_page', array(
+            'label'   => __('Pages', 'butterfly'),
+            'section' => 'butterfly_top_post_controls',
+            'settings'   => 'butterfly_top_page',
+            'type'     => 'multiple',
+            'choices'  => butterfly_page_list(),
+            'active_callback' => 'butterfly_page_callback',
+        ) ) );
+
+                /**
+         * Breaking news page
+         */
+        $wp_customize->add_control( new Customizer_Select_Dropdown_Control( $wp_customize, 'butterfly_top_post', array(
+            'label'   => __('Posts', 'butterfly'),
+            'section' => 'butterfly_top_post_controls',
+            'settings'   => 'butterfly_top_post',
+            'type'     => 'multiple',
+            'choices'  => butterfly_post_list(),
+            'active_callback' => 'butterfly_post_callback',
+        ) ) );
+
+
+
+
+
+
+
+
+
+
+
+
 		//  ===================================
-        //  ====     Header      ====
+        //  ====     social      ====
         //  ===================================
         $wp_customize->add_section('butterfly_social_controls', array(
             'title' => __('Social link', 'butterfly'),

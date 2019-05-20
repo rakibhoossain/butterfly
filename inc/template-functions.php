@@ -57,3 +57,45 @@ if ( ! function_exists( 'butterfly_post_categories' ) ) :
 		}
 	}
 endif;
+
+
+
+/**
+ * Get Breaking news types
+ * 
+ * @return array
+ */
+function butterfly_top_post_type() {
+  $news = array();
+
+  $news[ 'post' ]       = esc_html__( 'Posts', 'butterfly' );
+  $news[ 'page' ]       = esc_html__( 'Pages', 'butterfly' );
+  return $news;
+}
+
+/**
+ * Get all pagess
+ * 
+ * @return array
+ */
+function butterfly_page_list() {
+  $pages    = array();
+  foreach ( get_pages() as $page ) {
+    $pages[ $page->ID ] = $page->post_title;
+  }
+
+  return $pages;
+}
+/**
+ * Get all posts
+ * 
+ * @return array
+ */
+function butterfly_post_list() {
+  $pages    = array();
+  foreach ( get_posts() as $page ) {
+    $pages[ $page->ID ] = $page->post_title;
+  }
+
+  return $pages;
+}

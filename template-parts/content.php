@@ -32,7 +32,7 @@
                   $image_url = wp_get_attachment_image_src( get_post_thumbnail_id( get_the_ID() ), 'butterfly-large' );
                   $image = esc_url($image_url[0]);
                   $title = get_the_title();
-                  printf('div class="single_news_img"><img class="card-img-top img-responsive" src="'.esc_url($image).'" alt="'.$title.'"></div>');
+                  printf('<div class="single_news_img"><img class="card-img-top img-responsive" src="'.esc_url($image).'" alt="'.$title.'"></div>');
                 }
               ?>
 

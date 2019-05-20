@@ -16,16 +16,6 @@ get_header();
 ?>
 
 
-
-<?php
-$popular_show = 3 ;
-
-?>
-
-
-
-
-
     <!-- =========== latest news section======= -->
       <section id="latest_news">
         <div class="container">
@@ -38,11 +28,21 @@ $popular_show = 3 ;
 
 <?php $count = (int)0; ?> 
 
-  <div class="grid-post post-grid-<?php echo esc_attr( $popular_show ); ?>">
+  <div class="grid-post post-grid-3">
 
   <?php
+
+
+
+
+$posts = new WP_Query( array(
+  'post_type' => 'post',//'page ,post',
+  'ignore_sticky_posts' => true,
+  'posts_per_page' => 3,
+) );
+
     /* Start the Loop */
-    while ( have_posts() ) : the_post();?>
+    while ( $posts->have_posts() ) : $posts->the_post();?>
 
 
     <?php
@@ -76,7 +76,7 @@ $popular_show = 3 ;
           <div class="news_type_menu">
             <?php
             wp_nav_menu( array(
-              'theme_location'    => 'menu-1',
+              'theme_location'    => 'menu-news',
               'depth'             => 1,
               'container'         => false,
               'menu_class'        => 'news_menu',
@@ -86,18 +86,51 @@ $popular_show = 3 ;
 
           <div class="news_type_card">
             <div class="row">
-              
-                <?php
-                  /* Start the Loop */
-                  while ( have_posts() ) :
-                    the_post();
-                      echo '<div class="col-md-3 col-sm-3 col-xs-12 post">';
 
-                      get_template_part( 'template-parts/loops/post', 'card' );
 
-                    echo '</div>';
-                  endwhile;
-                ?>
+
+<?php
+
+$catlist = get_terms( 'category' );
+$count =0;
+if ( ! empty( $catlist ) ) {
+  foreach ( $catlist as $key => $item ) {
+    $count++;
+    if ($count>=5) break;
+?>
+<div class="col-md-3 col-sm-3 col-xs-12 post">
+  <div class="card" style="width: ;">
+    <div class="card_header">
+      <h3><?php echo $item->name; ?></h3>
+    </div>
+    <div class="news_type_overlay">
+        <?php 
+
+        $imageID = get_term_meta( $item->term_id, 'wpsfi_tax_image_id', true );
+
+        $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'card-img-top img-responsive' ) );
+        if($image){ 
+          echo $image;
+          }else{
+            printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="'.$item->name.'">');
+          }
+        ?>
+     <div class="card-body">
+        <p class="card-text"><?php echo $item->description; ?></p>
+     </div>
+     <a href="<?php echo esc_url( get_term_link($item) ); ?>" class="news_type_overlay_link"></a>
+    </div>
+    <div class="see_more">
+      <a href="<?php echo esc_url( get_term_link($item) ); ?>">আরও</a>
+    </div>
+  </div>
+</div>
+<?php
+
+  }
+}
+
+?>
 
  
 
@@ -118,8 +151,8 @@ $popular_show = 3 ;
 
                 <?php
                   /* Start the Loop */
-                  while ( have_posts() ) :
-                    the_post();
+                  while ( $posts->have_posts() ) : $posts->the_post();
+
                       echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'summary' );
@@ -165,7 +198,7 @@ $popular_show = 3 ;
       		<div class="donation_collect_menu">
             <?php
             wp_nav_menu( array(
-              'theme_location'    => 'menu-1',
+              'theme_location'    => 'menu-donation',
               'depth'             => 1,
               'container'         => false,
               'menu_class'        => 'donation_menu',
@@ -183,9 +216,9 @@ $popular_show = 3 ;
 
                 <?php
                   /* Start the Loop */
-                  while ( have_posts() ) :
-                    the_post();
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12">';
+                  while ( $posts->have_posts() ) : $posts->the_post();
+
+                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'card' );
 
@@ -252,9 +285,8 @@ $popular_show = 3 ;
               
                 <?php
                   /* Start the Loop */
-                  while ( have_posts() ) :
-                    the_post();
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12">';
+                  while ( $posts->have_posts() ) : $posts->the_post();
+                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
                       get_template_part( 'template-parts/loops/post', 'card' );
 
@@ -276,7 +308,7 @@ $popular_show = 3 ;
       		<div class="row">
       			<div class="col-md-6 col-sm-6 col-xs-12">
       				<div class="fb">
-      					<a href="#">
+      					<a href="<?php echo get_theme_mod( 'butterfly_facebook' ); ?>">
       						<span class="fa-stack fa-lg">
       						  <i class="fa fa-circle fa-stack-2x"></i>
       						  <i class="fa fa-facebook-f fa-stack-1x fa-inverse"></i>
@@ -287,7 +319,7 @@ $popular_show = 3 ;
       			</div>
       			<div class="col-md-6 col-sm-6 col-xs-12">
       				<div class="youtube">
-      					<a href="#">
+      					<a href="<?php echo get_theme_mod( 'butterfly_youtube' ); ?>">
       						 <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-youtube fa-stack-1x fa-inverse"></i>

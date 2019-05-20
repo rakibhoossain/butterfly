@@ -45,8 +45,8 @@
   					</div>
   					<div class="col-md-6">
   						<div id="title">
-  							<h1>ছোটদের রঙিন দুনিয়া</h1>
-  							<h4>www.projapotee.com</h4>
+  							<?php echo '<h1>'. get_bloginfo( 'description' ) .'</h1>'; ?>
+  							<?php echo '<h4>'. get_bloginfo( 'wpurl' ) .'</h4>'; ?>
   						</div>
   					</div>
   				</div>

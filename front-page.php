@@ -13,59 +13,53 @@
  */
 
 get_header();
-?>
 
 
-    <!-- =========== latest news section======= -->
-      <section id="latest_news">
-        <div class="container">
-          <div class="latest_news_summary">
-
-
-
-
-
-
-<?php $count = (int)0; ?> 
-
-  <div class="grid-post post-grid-3">
-
-  <?php
-
-
-
-
+// General post data
 $posts = new WP_Query( array(
   'post_type' => 'post',//'page ,post',
   'ignore_sticky_posts' => true,
   'posts_per_page' => 3,
 ) );
 
-    /* Start the Loop */
-    while ( $posts->have_posts() ) : $posts->the_post();?>
+
+?>
 
 
-    <?php
-    /**
-     * Run the loop for the search to output the results.
-     * If you want to overload this in a child theme then include a file
-     * called content-search.php and that will be used instead.
-     */
-    if ($count == 0) {
-      get_template_part( 'template-parts/loops/post-top', 'large' );
-    }else{
-      get_template_part( 'template-parts/loops/post-top', 'small' );
-    }
-
-    $count++; 
-    endwhile;
-    $count=0;?>
-  </div>
-
-
-
-
-
+    <!-- =========== latest news section======= -->
+      <section id="latest_news">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-9">
+              <div class="latest_news_summary">
+                <?php $count = (int)0; ?> 
+                <div class="grid-post post-grid-3">
+                <?php
+                  /* Start the Loop */
+                  while ( $posts->have_posts() ) : $posts->the_post();
+                  /**
+                   * Run the loop for the search to output the results.
+                   * If you want to overload this in a child theme then include a file
+                   * called content-search.php and that will be used instead.
+                   */
+                  if ($count == 0) {
+                    get_template_part( 'template-parts/loops/post-top', 'large' );
+                  }else{
+                    get_template_part( 'template-parts/loops/post-top', 'small' );
+                  }
+                  $count++; 
+                  endwhile;
+                  $count=0;?>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+            <?php
+              if (is_active_sidebar("sidebar-add")) :
+                dynamic_sidebar("sidebar-add");
+              endif;
+            ?>
+            </div>
           </div>
         </div>
       </section>
@@ -87,52 +81,47 @@ $posts = new WP_Query( array(
           <div class="news_type_card">
             <div class="row">
 
+            <?php
+            $catlist = get_terms( 'category' );
+            $count =0;
+            if ( ! empty( $catlist ) ) {
+              foreach ( $catlist as $key => $item ) {
+                $count++;
+                if ($count>=5) break;
+            ?>
+            <div class="col-md-3 col-sm-3 col-xs-12 post">
+              <div class="card" style="width: ;">
+                <div class="card_header">
+                  <h3><?php echo $item->name; ?></h3>
+                </div>
+                <div class="news_type_overlay">
+                    <?php 
 
+                    $imageID = get_term_meta( $item->term_id, 'wpsfi_tax_image_id', true );
 
-<?php
+                    $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'card-img-top img-responsive' ) );
+                    if($image){ 
+                      echo $image;
+                      }else{
+                        printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="'.$item->name.'">');
+                      }
+                    ?>
+                 <div class="card-body">
+                    <p class="card-text"><?php echo $item->description; ?></p>
+                 </div>
+                 <a href="<?php echo esc_url( get_term_link($item) ); ?>" class="news_type_overlay_link"></a>
+                </div>
+                <div class="see_more">
+                  <a href="<?php echo esc_url( get_term_link($item) ); ?>">আরও</a>
+                </div>
+              </div>
+            </div>
+            <?php
 
-$catlist = get_terms( 'category' );
-$count =0;
-if ( ! empty( $catlist ) ) {
-  foreach ( $catlist as $key => $item ) {
-    $count++;
-    if ($count>=5) break;
-?>
-<div class="col-md-3 col-sm-3 col-xs-12 post">
-  <div class="card" style="width: ;">
-    <div class="card_header">
-      <h3><?php echo $item->name; ?></h3>
-    </div>
-    <div class="news_type_overlay">
-        <?php 
+              }
+            }
 
-        $imageID = get_term_meta( $item->term_id, 'wpsfi_tax_image_id', true );
-
-        $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'card-img-top img-responsive' ) );
-        if($image){ 
-          echo $image;
-          }else{
-            printf('<img class="card-img-top img-responsive" src="https://via.placeholder.com/320x200" alt="'.$item->name.'">');
-          }
-        ?>
-     <div class="card-body">
-        <p class="card-text"><?php echo $item->description; ?></p>
-     </div>
-     <a href="<?php echo esc_url( get_term_link($item) ); ?>" class="news_type_overlay_link"></a>
-    </div>
-    <div class="see_more">
-      <a href="<?php echo esc_url( get_term_link($item) ); ?>">আরও</a>
-    </div>
-  </div>
-</div>
-<?php
-
-  }
-}
-
-?>
-
- 
+            ?>
 
             </div>
           </div>
@@ -294,9 +283,6 @@ if ( ! empty( $catlist ) ) {
                   endwhile;
                 ?>
 
-
-
-
             </div>
           </div>
       	</div>
@@ -331,7 +317,6 @@ if ( ! empty( $catlist ) ) {
       		</div>
       	</div>
       </section>
-
 
 <?php
 get_footer();

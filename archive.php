@@ -18,17 +18,21 @@ get_header();
         		<div class="container">
         			<div class="row">
         				<div class="col-md-9">
+							<?php 
+							if ( have_posts() ) :
+								while ( have_posts() ) :
+									the_post();
+									get_template_part( 'template-parts/content', get_post_type() );
+								endwhile; // End of the loop.
+									the_posts_pagination( array(
+										'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous Page', 'butterfly' ) . '</span>',
+										'next_text' => '<span class="screen-reader-text">' . __( 'Next Page', 'butterfly' ) . '</span><i class="fa fa-arrow-right"></i>' ,
+										'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'butterfly' ) . ' </span>',
+									) );
+							else :
+								get_template_part( 'template-parts/content', 'none' );
 
-							<?php
-							while ( have_posts() ) :
-								the_post();
-								get_template_part( 'template-parts/content', get_post_type() );
-							endwhile; // End of the loop.
-								the_posts_pagination( array(
-									'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous Page', 'butterfly' ) . '</span>',
-									'next_text' => '<span class="screen-reader-text">' . __( 'Next Page', 'butterfly' ) . '</span><i class="fa fa-arrow-right"></i>' ,
-									'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'butterfly' ) . ' </span>',
-								) );
+							endif;
 							?>
         				</div>
         				<div class="col-md-3">

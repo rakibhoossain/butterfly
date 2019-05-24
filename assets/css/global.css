@@ -125,10 +125,12 @@ li{
 }
 
 .comment-form .primary-btn {
-  border-radius: 0px !important;
-  border: 1px solid transparent;
-  color: #fff;
-  font-weight: 600;
+    border-radius: 0px !important;
+    border: 1px solid transparent;
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 15px;
+    background: #04091e;
 }
 
 .comment-form .primary-btn:hover {

@@ -138,7 +138,7 @@ function magazil_comment($comment, $args, $depth) { ?>
         <div class="comment-meta">
           <h5 class="comment-author"><?php echo get_comment_author_link();?></h5>
           <h6 class="comment-date"><?php comment_date(); ?></h6>
-          <?php edit_comment_link(__('(Edit)','magazil'),'  ','') ;?>
+          <?php edit_comment_link(__('(Edit)','butterfly'),'  ','') ;?>
         </div>
       </div>
 
@@ -151,7 +151,7 @@ function magazil_comment($comment, $args, $depth) { ?>
     <div class="comment-desc">
       <div class="comment-content">
         <?php if ($comment->comment_approved == '0') : ?>
-          <em><?php esc_attr_e('Your comment is awaiting moderation.','magazil') ;?></em>
+          <em><?php esc_attr_e('Your comment is awaiting moderation.','butterfly') ;?></em>
           <br />
         <?php endif; ?>
         <?php comment_text() ;?>

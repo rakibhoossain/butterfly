@@ -9,9 +9,16 @@
 
 get_header();
 ?>
-
-	<section id="primary" class="content-area">
+	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+			<section id="single_news">
+        		<div class="container">
+        			<div class="row">
+        				<div class="col-md-9">
+							<?php magazil_breadcrumbs(); ?>
+
+
+
 
 		<?php if ( have_posts() ) : ?>
 
@@ -37,8 +44,11 @@ get_header();
 				get_template_part( 'template-parts/content', 'search' );
 
 			endwhile;
-
-			the_posts_navigation();
+				the_posts_pagination( array(
+					'prev_text' => '<i class="fa fa-arrow-left"></i><span class="screen-reader-text">' . __( 'Previous Page', 'magazil' ) . '</span>',
+					'next_text' => '<span class="screen-reader-text">' . __( 'Next Page', 'magazil' ) . '</span><i class="fa fa-arrow-right"></i>' ,
+					'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'magazil' ) . ' </span>',
+				) );
 
 		else :
 
@@ -47,9 +57,18 @@ get_header();
 		endif;
 		?>
 
+
+
+        				</div>
+        				<div class="col-md-3">
+        					<?php get_sidebar();?>
+        				</div>
+        			</div>
+
+        		</div>
+      		</section>
 		</main><!-- #main -->
-	</section><!-- #primary -->
+	</div><!-- #primary -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -117,25 +117,16 @@ get_header();
       								<div class="sidebar_header">
       									<h4 class="sidebar_title"><span>আরও</span></h4>
       								</div>
-      								
                       <div class="sidebar_nav">
-                        <ul class="post-categories">
-                          <?php
-                            $catlist = get_terms( 'category' );
-                            if ( ! empty( $catlist ) ) {
-                              $ctl=(int)0;
-                              foreach ( $catlist as $key => $item ) {
-                                if ($ctl>=8) break;
-                            ?>
-                            <li><a href="<?php echo esc_url( get_term_link($item) ); ?>" rel="category tag"><?php echo $item->name; ?></a></li>
-                            <?php
-                            $ctl++;
-                              }
-                            }
-                          ?>
-                        </ul>
+                        <?php
+                        wp_nav_menu( array(
+                          'theme_location'    => 'menu-news-sidebar',
+                          'depth'             => 1,
+                          'container'         => false,
+                          'menu_class'        => 'post-categories',
+                        ) );
+                        ?>
       								</div>
-
       							</div>
       						</div>
       					</div>

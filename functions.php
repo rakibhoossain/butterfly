@@ -45,12 +45,14 @@ if ( ! function_exists( 'butterfly_setup' ) ) :
 		add_image_size( 'butterfly-large', 540, 360, true );
 		add_image_size( 'butterfly-medium', 320, 200, true );
 		add_image_size( 'butterfly-small', 280, 175, true );
+		add_image_size( 'butterfly-tiny', 120, 80, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(
 			'menu-1' => esc_html__( 'Primary', 'butterfly' ),
 			'menu-news' => esc_html__( 'News', 'butterfly' ),
 			'menu-donation' => esc_html__( 'Donation', 'butterfly' ),
+			'menu-news-sidebar' => esc_html__( 'News Sidebar', 'butterfly' ),
 		) );
 
 		/*
@@ -213,6 +215,11 @@ require get_template_directory() . '/inc/customizer.php';
 
 // Register Custom Navigation Walker
 require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
+
+/**
+ * Widgets
+ */
+require get_template_directory() . '/inc/components/widgets/widgets.php';
 
 /**
  * Load Jetpack compatibility file.

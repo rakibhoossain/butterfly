@@ -9,9 +9,18 @@
 
 get_header();
 ?>
-
+<div class="container breadcrumb-container">
+	<?php magazil_breadcrumbs(); ?>
+</div>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main">
+			<section id="single_news">
+        		<div class="container">
+        			<div class="row">
+        				<div class="col-md-9">
+
+
+
 
 			<section class="error-404 not-found">
 				<header class="page-header">
@@ -53,8 +62,23 @@ get_header();
 				</div><!-- .page-content -->
 			</section><!-- .error-404 -->
 
+
+
+
+
+
+
+
+
+        				</div>
+        				<div class="col-md-3">
+        					<?php get_sidebar();?>
+        				</div>
+        			</div>
+
+        		</div>
+      		</section>
 		</main><!-- #main -->
 	</div><!-- #primary -->
-
 <?php
 get_footer();

@@ -41,7 +41,23 @@ section.post-wrapper {
     overflow: hidden;
 }
 
+.breadcrumb-container{
+	margin-top: 10px;
+}
 
+.content-area {
+    margin-top: 20px;
+}
+
+.page-content .widget {
+    margin-top: 10px;
+}
+.page-content .widgettitle {
+	background: #04091e;
+    color: #fff;
+    padding: 12px 20px;
+    margin-bottom: 20px;
+}
 
 
 #publish_info{

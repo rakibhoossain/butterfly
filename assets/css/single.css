@@ -60,7 +60,21 @@ section.post-wrapper {
     padding: 12px 20px;
     margin-bottom: 20px;
 }
-
+.post-meta {
+    border-bottom: 1px solid #e2e2e2;
+    line-height: 24px;
+    overflow: hidden;
+    padding: 8px 0;
+    clear: both;
+}
+.post-meta span a {
+    padding: 3px 8px;
+    background: #eee;
+    border-radius: 3px;
+    color: #000;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
 
 #publish_info{
 	float: left;
@@ -73,7 +87,7 @@ margin: 0;
 	float: left;
 	padding: 0 10px 0 0;
 }
-#news_details .single_news_title{
+.single_news_header .single_news_title{
 	font-size: 35px;
 	margin: 0 0 15px 0;
 }

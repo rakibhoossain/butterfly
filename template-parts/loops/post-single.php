@@ -1,4 +1,11 @@
 <div class="row">
+  <div class="col-md-offset-3 col-md-9">
+      <div class="single_news_header">
+        <?php the_title( '<h3 class="single_news_title">', '</h3>' );?>
+      </div>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-3">
     <div class="additional_info_container">
       <div class="author each_row">
@@ -53,12 +60,12 @@
   </div>
   <div class="col-md-9">
     <div id="news_details">
-      <div class="single_news_header">
-        <?php the_title( '<h3 class="single_news_title">', '</h3>' );?>
-      </div>
       <div class="news_content">
         <?php the_content(); ?>
       </div>
+    </div>
+    <div class="post-meta">
+      <?php butterfly_entry_footer();?>
     </div>
   </div>
 </div>

@@ -2,22 +2,19 @@
   <div class="col-md-3">
     <div class="additional_info_container">
       <div class="author each_row">
+      <?php
+        $post_custom = get_post_custom(get_the_ID());
+        $author_name = $post_custom["sub_name"][0];
+        $image_url = $post_custom["portfolio_img"][0];
 
-<?php
-//Assuming $post is in scope
-if (function_exists ( 'mt_profile_img' ) ) {
-    $author_id=$post->post_author;
-    mt_profile_img( $author_id, array(
-        'size' => 'butterfly-medium',
-        'attr' => array( 'alt' => 'Alternative Text' ),
-        'echo' => true )
-    );
-}
-?>
-
-
-
-        <span class="name"><?php echo get_the_author_meta('display_name');?></span></div>
+        $imageID = attachment_url_to_postid( $image_url );
+        $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'img-responsive' ) );
+        if($image){ 
+          echo $image;
+        }
+      ?>
+        <span class="name"><?php echo $author_name; ?></span>
+      </div>
       <div class="time each_row">
           <div class="date_time">
             <p>

@@ -4,16 +4,39 @@
       <div class="author each_row">
       <?php
         $post_custom = get_post_custom(get_the_ID());
-        $author_name = $post_custom["sub_name"][0];
-        $image_url = $post_custom["portfolio_img"][0];
+        $author_name = get_the_author_meta('display_name');
 
-        $imageID = attachment_url_to_postid( $image_url );
-        $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'img-responsive' ) );
-        if($image){ 
-          echo $image;
+        $author_id = $post_custom["author_name"][0];
+
+        if ($author_id != '-1' && $author_id > (int)0 ) {
+          $author_b = get_post($author_id);
+          $author_custom = get_post_custom($author_id);
+          $author_position = $author_custom["team_position"][0];
+
+          $author_name = $author_b->post_title;
+          
+
+          $image =  wp_get_attachment_image( get_post_thumbnail_id( $author_id ), 'butterfly-medium', false, array( "class" => 'img-responsive' ) );
+          if($image){ 
+            echo $image;
+          }
+          echo '<span class="name">'.$author_name.'</span>';
+          echo '<br><span class="name">'.$author_position.'</span>';
+
+        }else{
+          if ($post_custom["sub_name"][0]) {
+            $author_name = $post_custom["sub_name"][0];
+          }
+          $image_url = $post_custom["portfolio_img"][0];
+
+          $imageID = attachment_url_to_postid( $image_url );
+          $image =  wp_get_attachment_image( $imageID, 'butterfly-medium', false, array( "class" => 'img-responsive' ) );
+          if($image){ 
+            echo $image;
+          }
+          echo '<span class="name">'.$author_name.'</span>';
         }
       ?>
-        <span class="name"><?php echo $author_name; ?></span>
       </div>
       <div class="time each_row">
           <div class="date_time">

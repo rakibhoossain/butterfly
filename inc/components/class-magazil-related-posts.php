@@ -129,7 +129,7 @@ if ( ! class_exists( 'Magazil_Related_Posts' ) ) {
 			if ( $related_posts->have_posts() ): ?>
 
             <div class="related-post">
-            	<h3 class="label-title"><?php esc_attr_e('Related posts', 'magazil'); ?></h3>
+            	<h3 class="label-title"><?php esc_attr_e('Related posts', 'butterfly'); ?></h3>
                 <ul class="slides" id="related_posts">
 			<?php
                 // Loop through related posts

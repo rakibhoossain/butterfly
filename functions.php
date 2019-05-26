@@ -166,6 +166,7 @@ wp_enqueue_style( 'butterfly-googleFonts', "https://fonts.googleapis.com/css?fam
 wp_enqueue_style( 'butterfly-global', get_stylesheet_directory_uri() . '/assets/css/global.css', array(), '1.0' );
 wp_enqueue_style( 'butterfly-menu', get_stylesheet_directory_uri() . '/assets/css/menu.css', array(), '1.0' );
 
+wp_enqueue_style( 'butterfly-owl-carousel', get_stylesheet_directory_uri() . '/assets/css/owl.carousel.css', array(), '2.2.0' );
 
 wp_enqueue_style( 'butterfly-single', get_stylesheet_directory_uri() . '/assets/css/single.css', array(), '1.0' );
 wp_enqueue_style( 'butterfly-index', get_stylesheet_directory_uri() . '/assets/css/index.css', array(), '1.0' );
@@ -179,6 +180,8 @@ wp_enqueue_style( 'butterfly-responsive', get_stylesheet_directory_uri() . '/ass
 	wp_enqueue_script( 'butterfly-popper', get_template_directory_uri() . '/assets/js/popper.min.js', array('jquery'), '1.0.0', true);
 	wp_enqueue_script( 'butterfly-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'), '4.0.0', true);
 
+	wp_enqueue_script( 'butterfly-owl-carousel', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'), '2.2.0', true);
+	wp_enqueue_script( 'butterfly-main', get_template_directory_uri() . '/assets/js/main.js', array('jquery'), '1.0.0', true);
 
 
 
@@ -220,6 +223,11 @@ require_once get_template_directory() . '/inc/class-wp-bootstrap-navwalker.php';
  * Widgets
  */
 require get_template_directory() . '/inc/components/widgets/widgets.php';
+
+/**
+ * Implement related post feature.
+ */
+require get_template_directory() . '/inc/components/class-magazil-related-posts.php';
 
 /**
  * Load Jetpack compatibility file.

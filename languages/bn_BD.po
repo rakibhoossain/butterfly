@@ -1,17 +1,17 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: butterfly\n"
-"POT-Creation-Date: 2019-05-24 23:30+0600\n"
-"PO-Revision-Date: 2019-05-24 23:36+0600\n"
+"POT-Creation-Date: 2019-05-25 21:28+0600\n"
+"PO-Revision-Date: 2019-05-25 21:34+0600\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: bn_BD\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Generator: Poedit 2.2\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n==0 || n==1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
 "X-Poedit-WPHeader: style.css\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -217,6 +217,10 @@ msgstr ""
 msgid "Add a menu"
 msgstr ""
 
+#: inc/components/class-magazil-related-posts.php:132
+msgid "Related posts"
+msgstr "সম্পর্কিত পোস্টগুলি"
+
 #: inc/components/widgets/class-widget-magazil-posts-list-sidebar.php:12
 msgid "Magazil: Recent Posts"
 msgstr ""
@@ -330,44 +334,38 @@ msgstr ""
 
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:79
-msgid ", "
+msgid " "
 msgstr ""
 
 #. translators: 1: list of categories.
 #: inc/template-tags.php:82
 #, php-format
 msgid "Posted in %1$s"
-msgstr ""
+msgstr "ক্যাটেগরি %1$s"
 
 #. translators: used between list items, there is a space after the comma
 #: inc/template-tags.php:86
 msgctxt "list item separator"
-msgid ", "
+msgid " "
 msgstr ""
 
 #. translators: 1: list of tags.
 #: inc/template-tags.php:89
 #, php-format
 msgid "Tagged %1$s"
-msgstr ""
-
-#. translators: %s: post title
-#: inc/template-tags.php:99
-#, php-format
-msgid "Leave a Comment<span class=\"screen-reader-text\"> on %s</span>"
-msgstr ""
+msgstr "বিষয় %1$s"
 
 #. translators: %s: Name of current post. Only visible to screen readers
-#: inc/template-tags.php:116 template-parts/content-page.php:37
+#: inc/template-tags.php:97 template-parts/content-page.php:37
 #, php-format
 msgid "Edit <span class=\"screen-reader-text\">%s</span>"
-msgstr ""
+msgstr "সম্পাদনা <span class=\"screen-reader-text\">%s</span>"
 
 #. translators: %s: search query.
 #: search.php:31
 #, php-format
 msgid "Search Results for: %s"
-msgstr ""
+msgstr "আপনি খুঁজছেন: %s"
 
 #: template-parts/content-none.php:14
 #, fuzzy
@@ -399,17 +397,20 @@ msgstr "পৃষ্ঠাগুলি:"
 
 #. Theme Name of the plugin/theme
 msgid "butterfly"
-msgstr ""
+msgstr "butterfly"
 
 #. Theme URI of the plugin/theme
 #. Author URI of the plugin/theme
-msgid "http://underscores.me/"
-msgstr ""
+msgid "https://facebook.com/prof.rakib"
+msgstr "https://facebook.com/prof.rakib"
 
 #. Description of the plugin/theme
-msgid "Description"
-msgstr "বর্ণনা "
+msgid "Butterfly is a multipurpose blog and magazine theme."
+msgstr ""
 
 #. Author of the plugin/theme
-msgid "Underscores.me"
+msgid "Rakib Hossain"
 msgstr ""
+
+#~ msgid "Description"
+#~ msgstr "বর্ণনা "

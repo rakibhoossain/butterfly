@@ -142,11 +142,11 @@ if ( ! class_exists( 'Magazil_Related_Posts' ) ) {
 					echo '<a class="posts-i-img" href="' . esc_url( get_the_permalink() ) . '"><span style="background: url(' . esc_url( $image[0] ) . ')"></span></a>';
 				}
 
-                $category = get_the_category( $related_posts->post->ID );
+                $category = get_primary_category( $related_posts->post->ID );
 
 				echo '<time class="posts-i-date" datetime="'.get_the_date().'">'.get_the_date().'</time><div class="posts-i-info">';
-				if ( $category && !is_wp_error( $category ) ) :
-  					echo '<a href="'.get_category_link($category[0]->cat_ID).'" class="posts-i-ctg">' . $category[0]->cat_name . '</a>';
+				if ( !empty( $category ) ) :
+  					echo '<a href="'.$category['url'].'" class="posts-i-ctg">' . $category['name'] . '</a>';
                 endif;
                 	echo '
                         <h3 class="posts-i-ttl"><a href="' . esc_url( get_the_permalink() ) . '">' . get_the_title() . '</a></h3>

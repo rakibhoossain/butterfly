@@ -46,6 +46,10 @@
 	#wrapper #footer h4{
 		font-size: 21px;
 	}
+
+	.author_data {margin-top: 25px;}
+	#logo{text-align: center;}
+	#title{margin-bottom: 10px;}
 }
 @media screen and (max-width: 767px) {
 	#wrapper #top_nav #logo > img, #wrapper #footer .footer_logo img{

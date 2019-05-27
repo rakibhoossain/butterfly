@@ -46,6 +46,7 @@ if ( ! function_exists( 'butterfly_setup' ) ) :
 		add_image_size( 'butterfly-medium', 320, 200, true );
 		add_image_size( 'butterfly-small', 280, 175, true );
 		add_image_size( 'butterfly-tiny', 120, 80, true );
+		add_image_size( 'butterfly-author', 80, 80, true );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus( array(

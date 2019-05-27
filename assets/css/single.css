@@ -268,3 +268,15 @@ margin: 0;
 	top: 0;
 	left: 0;
 }
+.author img {
+    margin-bottom: 5px;
+}
+.news_content .post-thumbnail {
+    margin-bottom: 15px;
+}
+.news_content .post-thumbnail img {
+    width:100%;
+}
+.heateor_sss_sharing_container.heateor_sss_horizontal_sharing {
+    margin-top: 15px;
+}

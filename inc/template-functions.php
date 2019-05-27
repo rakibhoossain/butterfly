@@ -37,11 +37,6 @@ function butterfly_pingback_header() {
 add_action( 'wp_head', 'butterfly_pingback_header' );
 
 
-
-
-
-
-
 /**
  * Gets the primary category set by Yoast SEO.
  *

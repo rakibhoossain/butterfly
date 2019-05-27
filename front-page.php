@@ -88,7 +88,7 @@ get_header();
                   $posts = new WP_Query( array(
                     'post_type' => 'post',//'page ,post',
                     'ignore_sticky_posts' => true,
-                    'posts_per_page' => 8,
+                    'posts_per_page' => 6,
                   ) );
 
                   /* Start the Loop */

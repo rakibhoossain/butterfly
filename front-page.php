@@ -222,7 +222,7 @@ get_header();
 
                   $cats_3        = get_theme_mod( 'butterfly_feature_post_3', 0 );
                   foreach ( $cats_3 as $cat_3 ) :
-                    $feature_post_3 = new wp_query( array('category__in' => $cat_3, 'posts_per_page'=> 3, 'no_found_rows' => 1 ,'ignore_sticky_posts' => true)  );
+                    $feature_post_3 = new wp_query( array('category__in' => $cat_3, 'posts_per_page'=> 1, 'no_found_rows' => 1 ,'ignore_sticky_posts' => true)  );
                     /* Start the Loop */
                     while ( $feature_post_3->have_posts() ) : $feature_post_3->the_post();
                         echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';

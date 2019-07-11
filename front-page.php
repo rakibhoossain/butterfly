@@ -55,19 +55,22 @@ get_header();
             <div class="row">
 
               <?php
-                $cat_1        = get_theme_mod( 'butterfly_feature_post_1', 0 );
-                $feature_post_1 = new wp_query( array('category__in' => $cat_1, 'posts_per_page'=> 4, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
-                /* Start the Loop */
-                while ( $feature_post_1->have_posts() ) : $feature_post_1->the_post();
+                $cats_1        = get_theme_mod( 'butterfly_feature_post_1', 0 );
 
-                    echo '<div class="col-md-3 col-sm-3 col-xs-12 post">';
+                foreach ( $cats_1 as $cat_1 ) :             
+                  $feature_post_1 = new wp_query( array('cat' => $cat_1, 'posts_per_page'=> 1, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
+                  /* Start the Loop */
+                  while ( $feature_post_1->have_posts() ) : $feature_post_1->the_post();
 
-                    get_template_part( 'template-parts/loops/post', 'card' );
+                      echo '<div class="col-md-3 col-sm-3 col-xs-12 post">';
 
-                  echo '</div>';
-                endwhile;
-                wp_reset_postdata();
-                wp_reset_query();
+                      get_template_part( 'template-parts/loops/post', 'card' );
+
+                    echo '</div>';
+                  endwhile;
+                  wp_reset_postdata();
+                  wp_reset_query();
+                endforeach;
               ?>
 
             </div>
@@ -160,20 +163,22 @@ get_header();
 
                 <?php
 
-                  $cat_2        = get_theme_mod( 'butterfly_feature_post_2', 0 );
-                  $feature_post_2 = new wp_query( array('category__in' => $cat_2, 'posts_per_page'=> 3, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
+                  $cats_2        = get_theme_mod( 'butterfly_feature_post_2', 0 );
+                  foreach ( $cats_2 as $cat_2 ) :
+                    $feature_post_2 = new wp_query( array('category__in' => $cat_2, 'posts_per_page'=> 1, 'no_found_rows' => 1 , 'ignore_sticky_posts' => true)  );
 
-                  /* Start the Loop */
-                  while ( $feature_post_2->have_posts() ) : $feature_post_2->the_post();
+                    /* Start the Loop */
+                    while ( $feature_post_2->have_posts() ) : $feature_post_2->the_post();
 
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
+                        echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
-                      get_template_part( 'template-parts/loops/post', 'card' );
+                        get_template_part( 'template-parts/loops/post', 'card' );
 
-                    echo '</div>';
-                  endwhile;
-                  wp_reset_postdata();
-                  wp_reset_query();
+                      echo '</div>';
+                    endwhile;
+                    wp_reset_postdata();
+                    wp_reset_query();
+                  endforeach;
                 ?>
 
             </div>
@@ -215,18 +220,20 @@ get_header();
               
                 <?php
 
-                  $cat_3        = get_theme_mod( 'butterfly_feature_post_3', 0 );
-                  $feature_post_3 = new wp_query( array('category__in' => $cat_3, 'posts_per_page'=> 3, 'no_found_rows' => 1 ,'ignore_sticky_posts' => true)  );
-                  /* Start the Loop */
-                  while ( $feature_post_3->have_posts() ) : $feature_post_3->the_post();
-                      echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
+                  $cats_3        = get_theme_mod( 'butterfly_feature_post_3', 0 );
+                  foreach ( $cats_3 as $cat_3 ) :
+                    $feature_post_3 = new wp_query( array('category__in' => $cat_3, 'posts_per_page'=> 3, 'no_found_rows' => 1 ,'ignore_sticky_posts' => true)  );
+                    /* Start the Loop */
+                    while ( $feature_post_3->have_posts() ) : $feature_post_3->the_post();
+                        echo '<div class="col-md-4 col-sm-4 col-xs-12 post">';
 
-                      get_template_part( 'template-parts/loops/post', 'card' );
+                        get_template_part( 'template-parts/loops/post', 'card' );
 
-                    echo '</div>';
-                  endwhile;
-                  wp_reset_postdata();
-                  wp_reset_query();
+                      echo '</div>';
+                    endwhile;
+                    wp_reset_postdata();
+                    wp_reset_query();
+                  endforeach;
                 ?>
 
             </div>

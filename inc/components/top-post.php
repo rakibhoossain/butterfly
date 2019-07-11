@@ -6,7 +6,6 @@
 	$page 				= get_theme_mod( 'butterfly_top_page', 0 );
 	$post 				= get_theme_mod( 'butterfly_top_post', 0 );
 
-
 			if( $type == 'page' ){
 
 				$args = array('post_type' => 'page', 'post__in' => $page, 'no_found_rows' => 1, 'ignore_sticky_posts' => true, );
@@ -17,7 +16,22 @@
 
 			}
 
-			$top_post_query = new wp_query( $args  );
+        $argss = array(
+          'post_type' => 'post',
+          'posts_per_page'=> 3,
+          'no_found_rows' => 1,
+          'ignore_sticky_posts' => true,
+          'meta_query' => array(
+                          array(
+                              'key'     => 'butterfly_feature_area',
+                              'value'   => 1
+                          )
+                      )
+
+        );
+      
+
+			$top_post_query = new wp_query( $argss  );
 			$count = (int)0;
 
 			while ( $top_post_query->have_posts() ) : $top_post_query->the_post();

@@ -157,7 +157,7 @@ function butterfly_customize_register( $wp_customize ) {
             'label'   => __('Feature one category', 'butterfly'),
             'section' => 'butterfly_feature_post_controls',
             'settings'   => 'butterfly_feature_post_1',
-            'type'     => 'single',
+            'type'     => 'multiple',
             'choices'  => butterfly_cat_list(),
             // 'active_callback' => 'butterfly_post_callback',
         ) ) );
@@ -165,7 +165,7 @@ function butterfly_customize_register( $wp_customize ) {
             'label'   => __('Feature two category', 'butterfly'),
             'section' => 'butterfly_feature_post_controls',
             'settings'   => 'butterfly_feature_post_2',
-            'type'     => 'single',
+            'type'     => 'multiple',
             'choices'  => butterfly_cat_list(),
             // 'active_callback' => 'butterfly_post_callback',
         ) ) );
@@ -173,7 +173,7 @@ function butterfly_customize_register( $wp_customize ) {
             'label'   => __('Feature three category', 'butterfly'),
             'section' => 'butterfly_feature_post_controls',
             'settings'   => 'butterfly_feature_post_3',
-            'type'     => 'single',
+            'type'     => 'multiple',
             'choices'  => butterfly_cat_list(),
             // 'active_callback' => 'butterfly_post_callback',
         ) ) );
@@ -182,7 +182,7 @@ function butterfly_customize_register( $wp_customize ) {
             'label'   => __('Feature video category', 'butterfly'),
             'section' => 'butterfly_feature_post_controls',
             'settings'   => 'butterfly_feature_post_video',
-            'type'     => 'single',
+            'type'     => 'multiple',
             'choices'  => butterfly_cat_list(),
             // 'active_callback' => 'butterfly_post_callback',
         ) ) );
